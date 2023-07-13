@@ -933,7 +933,7 @@ namespace eurate {
     //% inlineInputMode=external
     //% weight=100
     //% blockId= line_follower
-    //% block="Linienfolger mit zwei IR-Sensoren|rechter IR-Sensor  %pinleft|linker IR-Sensor %pinright|Geschwindigkeit  %speed|Wert in m/s um Motor zu bewegen  %ms"
+    //% block="Linienfolger mit zwei IR-Sensoren|linker IR-Sensor  %pinleft|rechter IR-Sensor %pinright|Geschwindigkeit  %speed|Wert in m/s um Motor zu bewegen  %ms"
     export function LineFollower(pinleft: DigitalPin, pinright: DigitalPin, speed: number, ms:number): void {
 
         let right = eurate.IrSensor(pinright);
