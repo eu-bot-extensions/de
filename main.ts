@@ -262,7 +262,7 @@ namespace eurate {
      * S1~S8.
      * 0°~180°.
     */
-    //% blockId=motor_servo block="Winkel %degree|vom Servomotor %index"
+    //% blockId=motor_servo block="Winkel|%degree|vom Servomotor|%index"
     //% weight=100
     //% degree.min=0 degree.max=180
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=4
@@ -750,7 +750,7 @@ namespace eurate {
     //% inlineInputMode=external
     //% weight=100
     //% blockId= labyrinth_navigator_us
-    //% block="Labyrinth-Navigator mit Ultraschallsensor (USS)|Emitterpin  USS %trigpin|Transmitterpin USS %echopin|Winkel von vorderen USS %angle|Geschwindigkeit  %speed|Schwelle in cm from USS  %distance|Pin vom Servomotor %servopin|Sekunden für Drehung %seconds|Winkel um sich umzuschauen %rangeLA"
+    //% block="Labyrinth-Navigator mit Ultraschallsensor USS|Emitterpin  USS %trigpin|Transmitterpin USS %echopin|Winkel von vorderen USS %angle|Geschwindigkeit  %speed|Schwelle in cm from USS  %distance|Pin vom Servomotor %servopin|Sekunden für Drehung %seconds|Winkel um sich umzuschauen %rangeLA"
     export function LavNabUS(trigpin: DigitalPin, echopin: DigitalPin, angle: number, speed: number, distance: number, servopin: Servos, seconds: number, rangeLA:number) : void {
         
         //motorStopAll();
@@ -971,7 +971,7 @@ namespace eurate {
     //% inlineInputMode=external
     //% weight=70
     //% blockId= line_follower_three_s
-    //% block="Linienfolger mit drei IR-Sensoren|linker IR-Sensor  %pinleft|rechter IR-Sensor %pinright|mittlerer IR-Sensor %pincenter|Geschwindigkeit  %speed|Wert in m/s um Motor zu bewegen  %ms"
+    //% block="Linienfolger mit drei IR-Sensoren|linker IR-Sensor  %pinleft|rechter IR-Sensor %pinright|mittlerer IR-Sensor %pincenter|Geschwindigkeit  %speed|Wert in ms um Motor zu bewegen  %ms"
     export function LineFollowerThreeSensors(pinleft: DigitalPin, pinright: DigitalPin, pincenter: DigitalPin, speed: number, ms: number): void {
 
         let leftV = eurate.IrSensor(pinleft);
