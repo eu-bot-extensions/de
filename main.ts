@@ -1,5 +1,5 @@
 /*！
- * @file pxt-eu-rate/de/main.ts
+ * @file pxt-eu-rate/main.ts
  * @brief EuRate microbit motors and sensors makecode library.
  *
  * @copyright	[EuRate](https://github.com/SimoneDavi55/pxt-eu-rate/blob/master/LICENSE), 2023
@@ -11,7 +11,7 @@
 /**
  *EuRate Makecode extension
  */
-//% weight=10 color=#DF6721 icon="\uf11b" block="Eu Rate library de"
+//% weight=10 color=#DF6721 icon="\uf11b" block="Eu Rate library DE"
 namespace eurate {
 
     const PCA9685_ADDRESS = 0x40
@@ -110,9 +110,9 @@ namespace eurate {
      * The user defines the motor rotation direction.
      */
     export enum Dir {
-        //% blockId="CW" block="CW"
+        //% blockId="CW" block="iU"
         CW = 1,
-        //% blockId="CCW" block="CCW"
+        //% blockId="CCW" block="gU"
         CCW = -1,
     }
 
@@ -120,16 +120,16 @@ namespace eurate {
      * The user defines the straight line direction.
      */
     export enum TwoDDir {
-        //% blockId="FW" block="FW"
+        //% blockId="FW" block="V"
         FW = 1,
-        //% blockId="BW" block="BW"
+        //% blockId="BW" block="R"
         BW = -1,
     }
 
     export enum DirRot {
-        //% blockId="Right" block="Right"
+        //% blockId="Right" block="Rechts"
         Right = 1,
-        //% blockId="Left" block="Left"
+        //% blockId="Left" block="Links"
         Left = -1,
     }
 
@@ -262,10 +262,9 @@ namespace eurate {
      * S1~S8.
      * 0°~180°.
     */
-    //% blockId=motor_servo block="Servo|%index|degree|%degree"
+    //% blockId=motor_servo block="Winkel|%degree|vom Servomotor|%index"
     //% weight=100
     //% degree.min=0 degree.max=180
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=4
     export function servo(index: Servos, degree: number): void {
         if (!initialized) {
             initPCA9685()
@@ -282,10 +281,8 @@ namespace eurate {
      * speed(0~255).
     */
     //% weight=90
-    //% blockId=motor_MotorRun block="Motor|%index|dir|%Dir|speed|%speed"
+    //% blockId=motor_MotorRun block="Motor|%index|Richtung|%Dir|Geschindigkeit|%speed"
     //% speed.min=0 speed.max=255
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
     export function MotorRun(index: Motors, direction: Dir, speed: number): void {
         if (!initialized) {
             initPCA9685()
@@ -315,9 +312,7 @@ namespace eurate {
      * M1_M2/M3_M4.
     */
     //% weight=80
-    //% blockId=motor_stepperDegree_42 block="Stepper 42|%index|dir|%direction|degree|%degree"
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
+    //% blockId=motor_stepperDegree_42 block="Stepper 42|%index|Richtung|%direction|Winkel|%degree"
     export function stepperDegree_42(index: Steppers, direction: Dir, degree: number): void {
         if (!initialized) {
             initPCA9685()
@@ -346,9 +341,7 @@ namespace eurate {
      * M1_M2/M3_M4.
     */
     //% weight=70
-    //% blockId=motor_stepperTurn_42 block="Stepper 42|%index|dir|%direction|turn|%turn"
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
+    //% blockId=motor_stepperTurn_42 block="Stepper 42|%index|Richtung|%direction|Drehung|%turn"
     export function stepperTurn_42(index: Steppers, direction: Dir, turn: number): void {
         if (turn == 0) {
             return;
@@ -362,9 +355,7 @@ namespace eurate {
      * M1_M2/M3_M4.
     */
     //% weight=60
-    //% blockId=motor_stepperDegree_28 block="Stepper 28|%index|dir|%direction|degree|%degree"
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
+    //% blockId=motor_stepperDegree_28 block="Stepper 28|%index|Richtung|%direction|Winkel|%degree"
     export function stepperDegree_28(index: Steppers, direction: Dir, degree: number): void {
         if (!initialized) {
             initPCA9685()
@@ -393,9 +384,7 @@ namespace eurate {
      * M1_M2/M3_M4.
     */
     //% weight=50
-    //% blockId=motor_stepperTurn_28 block="Stepper 28|%index|dir|%direction|turn|%turn"
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
+    //% blockId=motor_stepperTurn_28 block="Stepper 28|%index|Richtung|%direction|Drehung|%turn"
     export function stepperTurn_28(index: Steppers, direction: Dir, turn: number): void {
         if (turn == 0) {
             return;
@@ -408,10 +397,7 @@ namespace eurate {
      * Two parallel stepper motors are executed simultaneously(DegreeDual).
     */
     //% weight=40
-    //% blockId=motor_stepperDegreeDual_42 block="Dual Stepper %stepper|M1_M2 dir %direction1|degree %degree1|M3_M4 dir %direction2|degree %degree2"
-    //% stepper.fieldEditor="gridpicker" stepper.fieldOptions.columns=2
-    //% direction1.fieldEditor="gridpicker" direction1.fieldOptions.columns=2
-    //% direction2.fieldEditor="gridpicker" direction2.fieldOptions.columns=2
+    //% blockId=motor_stepperDegreeDual_42 block="dualer Stepper %stepper|M1_M2 Richtung %direction1|Winkel %degree1|M3_M4 Richtung %direction2|Winkel %degree2"
     export function stepperDegreeDual_42(stepper: Stepper, direction1: Dir, degree1: number, direction2: Dir, degree2: number): void {
         if (!initialized) {
             initPCA9685()
@@ -500,10 +486,7 @@ namespace eurate {
      * Two parallel stepper motors are executed simultaneously(Turn).
     */
     //% weight=30
-    //% blockId=motor_stepperTurnDual_42 block="Dual Stepper %stepper|M1_M2 dir %direction1|trun %trun1|M3_M4 dir %direction2|trun %trun2"
-    //% stepper.fieldEditor="gridpicker" stepper.fieldOptions.columns=2
-    //% direction1.fieldEditor="gridpicker" direction1.fieldOptions.columns=2
-    //% direction2.fieldEditor="gridpicker" direction2.fieldOptions.columns=2
+    //% blockId=motor_stepperTurnDual_42 block="dualer Stepper %stepper|M1_M2 Richtung %direction1|Drehung %trun1|M3_M4 Richtung %direction2|Drehung %trun2"
     export function stepperTurnDual_42(stepper: Stepper, direction1: Dir, trun1: number, direction2: Dir, trun2: number): void {
         if ((trun1 == 0) && (trun2 == 0)) {
             return;
@@ -525,8 +508,7 @@ namespace eurate {
      * Stop the dc motor.
     */
     //% weight=20
-    //% blockId=motor_motorStop block="Motor stop|%index"
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
+    //% blockId=motor_motorStop block="Motor aus|%index"
     export function motorStop(index: Motors) {
         setPwm((4 - index) * 2, 0, 0);
         setPwm((4 - index) * 2 + 1, 0, 0);
@@ -536,7 +518,7 @@ namespace eurate {
      * Stop all motors
     */
     //% weight=100
-    //% blockId=motor_motorStopAll block="Motor Stop All"
+    //% blockId=motor_motorStopAll block="Alle Motoren aus"
     export function motorStopAll(): void {
         for (let idx = 1; idx <= 4; idx++) {
             motorStop(idx);
@@ -549,7 +531,7 @@ namespace eurate {
     * MotorRun(index: Motors, direction: Dir, speed: number):
     */
     //% weight=10
-    //% blockId=motor_motorsStart block="Motors Start All|%Dir|%speed"
+    //% blockId=motor_motorsStart block="Alle Motoren an|%Dir|%speed"
     export function MotorsStart(direction: Dir, speed: number): void {
         for (let idx = 1; idx <= 4; idx++) {
             MotorRun(idx, direction, speed);
@@ -561,7 +543,7 @@ namespace eurate {
     * MotorRun(index: Motors, direction: Dir, speed: number):
     */
     //% weight=100
-    //% blockId=motor_RobotRotateRight block="Robot Rotate Right|speed %speed"
+    //% blockId=motor_RobotRotateRight block="Drehung nach rechts|Geschwindigkeit %speed"
     export function RotateRight(speed: number): void {
         motorStopAll();
         MotorRun(1, -1, speed); //Right Back
@@ -576,7 +558,7 @@ namespace eurate {
     * MotorRun(index: Motors, direction: Dir, speed: number):
     */
     //% weight=100
-    //% blockId=motor_RobotRotateLeft block="Robot Rotate Left|speed %speed"
+    //% blockId=motor_RobotRotateLeft block="Drehung nach links|Geschwindigkeit %speed"
     export function RotateLeft(speed: number): void {
         motorStopAll();
         MotorRun(1, 1, speed); //Right Back
@@ -593,7 +575,7 @@ namespace eurate {
     * @param maxCmDistance maximum distance in centimeters (default is 500)
     */
     //% weight=1
-    //% blockId=sonar_ping block="ping trig %trig|echo %echo|unit %unit"
+    //% blockId=sonar_ping block="Emitterpin %trig|Transmitterpin %echo|Einheit %unit"
     export function ping(trig: DigitalPin, echo: DigitalPin, unit: PingUnit, maxCmDistance = 500): number {
         // send pulse
         pins.setPull(trig, PinPullMode.PullNone);
@@ -620,7 +602,7 @@ namespace eurate {
     * @param duration duration in microseconds
     */
     //% weight=90
-    //% blockId=motor_RobotMove block="Robot Move |speed (0-255) %speed|direction %Dir|duration ms %duration"
+    //% blockId=motor_RobotMove block="Bewege Roboter |Geschwindigkeit (0-255) %speed|Richtung %Dir|Dauer in ms %duration"
     export function Move(speed: number, direction: TwoDDir, duration: number, maxVelocity = 255, minVelocity = 1): void {
         motorStopAll();
         if (speed < minVelocity) { speed = minVelocity; } else if (speed > maxVelocity) { speed = maxVelocity; } //check boundries
@@ -646,7 +628,7 @@ namespace eurate {
     */
     //% inlineInputMode=external
     //% weight=100
-    //% blockId=us_sensor block="US Sensor |ping trig %trigpin|echo %echopin"
+    //% blockId=us_sensor block="US-Sensor |Emitterpin %trigpin|Transmitterpin %echopin"
     export function UsSensor(trigpin: DigitalPin, echopin: DigitalPin): number {
         pins.digitalWritePin(trigpin, 0)
         control.waitMicros(2)
@@ -662,7 +644,7 @@ namespace eurate {
     */
     //% inlineInputMode=external
     //% weight=100
-    //% blockId=ir_sensor_boolean block="IR Sensor |pin digital %pin"
+    //% blockId=ir_sensor_boolean block="IR-Sensor |Pin %pin"
     export function IrSensor(pin: DigitalPin) : boolean {
        let value = pins.digitalReadPin(pin)
        return value == 0;
@@ -674,7 +656,7 @@ namespace eurate {
     */
     //% inlineInputMode=external
     //% weight=95
-    //% blockId=ir_sensor_dvalue block="IR Sensor Digital Value |pin %pin"
+    //% blockId=ir_sensor_dvalue block="Digitaler Wert des IR-Sensors |Pin %pin"
     export function IrSensorDigital(pin: DigitalPin): number {
         let value = pins.digitalReadPin(pin)
         return value;
@@ -727,7 +709,7 @@ namespace eurate {
     */
     //% inlineInputMode=external
     //% blockId=ir_sensor_trigger 
-    //% block="IR Sensor trigger |pin sensor %pinInput|pin output %pinOutput"
+    //% block="IR-Sensor Auslöser |Pin Sensor %pinInput|Pin Ausgabe %pinOutput"
     export function irSensorTrigger(pinInput: DigitalPin, pinOutput: DigitalPin) : void {
         if (eurate.IrSensor(pinInput)) {
             pins.digitalWritePin(pinOutput, 1);
@@ -750,7 +732,7 @@ namespace eurate {
     //% inlineInputMode=external
     //% weight=100
     //% blockId= labyrinth_navigator_us
-    //% block="Labyrinth navigator with US sensor|trigpin US %trigpin|echopin US %echopin|angle range front US %angle|motors speed  %speed|threshold in cm from US  %distance|pin servo %servopin|seconds to turn %seconds|degree range to look around %rangeLA"
+    //% block="Labyrinth-Navigator mit Ultraschallsensor (USS)|Emitterpin  USS %trigpin|Transmitterpin USS %echopin|Winkel von vorderen USS %angle|Geschwindigkeit  %speed|Schwelle in cm from USS  %distance|Pin vom Servomotor %servopin|Sekunden für Drehung %seconds|Winkel um sich umzuschauen %rangeLA"
     export function LavNabUS(trigpin: DigitalPin, echopin: DigitalPin, angle: number, speed: number, distance: number, servopin: Servos, seconds: number, rangeLA:number) : void {
         
         //motorStopAll();
@@ -914,7 +896,7 @@ namespace eurate {
     //% inlineInputMode=external
     //% weight=90
     //% blockId= turn_robot
-    //% block="Turn robot|motors speed  %speed|seconds %seconds|direction %direction"
+    //% block="Drehe Roboter|Geschwindigkeit  %speed|Sekunden %seconds|Richtung %direction"
     export function Turn(speed: number, seconds: number, direction: DirRot): void {
         if (direction == DirRot.Right) {
             TurnRightRobotForSeconds(speed, seconds)
@@ -933,7 +915,7 @@ namespace eurate {
     //% inlineInputMode=external
     //% weight=100
     //% blockId= line_follower
-    //% block="Line follower with two ir sensors|left ir sensor  %pinleft|right ir sensor %pinright|speed  %speed|value of mS to move motors  %ms"
+    //% block="Linienfolger mit zwei IR-Sensoren|linker IR-Sensor  %pinleft|rechter IR-Sensor %pinright|Geschwindigkeit  %speed|Wert in m/s um Motor zu bewegen  %ms"
     export function LineFollower(pinleft: DigitalPin, pinright: DigitalPin, speed: number, ms:number): void {
 
         let right = eurate.IrSensor(pinright);
@@ -971,7 +953,7 @@ namespace eurate {
     //% inlineInputMode=external
     //% weight=70
     //% blockId= line_follower_three_s
-    //% block="Line follower with three ir sensors|left ir sensor  %pinleft|right ir sensor %pinright|center ir sensor %pincenter|speed  %speed|value of mS to move motors  %ms"
+    //% block="Linienfolger mit drei IR-Sensoren|linker IR-Sensor  %pinleft|rechter IR-Sensor %pinright|mittlerer IR-Sensor %pincenter|Geschwindigkeit  %speed|Wert in m/s um Motor zu bewegen  %ms"
     export function LineFollowerThreeSensors(pinleft: DigitalPin, pinright: DigitalPin, pincenter: DigitalPin, speed: number, ms: number): void {
 
         let leftV = eurate.IrSensor(pinleft);
